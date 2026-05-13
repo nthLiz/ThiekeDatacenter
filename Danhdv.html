@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Viettel IDC – Hạ Tầng Cơ Điện Tier III | Santiago, Dominican Republic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #e3000f;
+      --red-dark: #b0000c;
+      --red-light: #ff1a27;
+      --black: #0a0a0a;
+      --dark: #111317;
+      --gray-900: #1a1d23;
+      --gray-800: #252830;
+      --gray-600: #6b7280;
+      --gray-400: #9ca3af;
+      --gray-200: #e5e7eb;
+      --white: #ffffff;
+      --gold: #f59e0b;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(227,0,15,0.2);
+      padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.75rem; text-decoration: none;
+    }
+    .logo-mark {
+      width: 40px; height: 40px; background: var(--red);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 1.1rem; color: white;
+      clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+    }
+    .logo-text {
+      font-weight: 800; font-size: 1.15rem; letter-spacing: 0.05em;
+      color: white;
+    }
+    .logo-text span { color: var(--red); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--gray-400);
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em;
+      text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--red); color: white; border: none;
+      padding: 0.55rem 1.4rem; font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer;
+      clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+      transition: background 0.2s; text-decoration: none; display: inline-block;
+    }
+    .nav-cta:hover { background: var(--red-light); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: white; transition: 0.3s; }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a0a0a 0%, #111317 40%, #1a0204 100%);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding-top: 68px;
+    }
+    .hero-grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(227,0,15,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(227,0,15,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridMove 20s linear infinite;
+    }
+    @keyframes gridMove {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(60px); }
+    }
+    .hero-glow {
+      position: absolute; top: 20%; right: 5%; width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(227,0,15,0.15) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: center; position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(227,0,15,0.12); border: 1px solid rgba(227,0,15,0.3);
+      padding: 0.35rem 1rem; border-radius: 2px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 1.5rem;
+    }
+    .badge-dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: blink 1.5s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 800; line-height: 1.05;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .hero-title .accent { color: var(--red); }
+    .hero-title .line2 { display: block; }
+    .hero-sub {
+      color: var(--gray-400); font-size: 1rem; line-height: 1.7;
+      max-width: 500px; margin-bottom: 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--red); color: white; border: none;
+      padding: 0.9rem 2rem; font-size: 0.9rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      transition: all 0.2s; text-decoration: none; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--red-light); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent; color: white;
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 0.9rem 2rem; font-size: 0.9rem; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer;
+      transition: all 0.2s; text-decoration: none; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--red); color: var(--red); }
+    .hero-visual {
+      display: flex; align-items: center; justify-content: center;
+    }
+    .uptime-card {
+      background: var(--gray-900); border: 1px solid rgba(227,0,15,0.2);
+      padding: 2.5rem; text-align: center; position: relative;
+      clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+      animation: floatUp 3s ease-in-out infinite;
+    }
+    @keyframes floatUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    .uptime-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 0.75rem; }
+    .uptime-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 4.5rem; font-weight: 800; color: var(--red);
+      line-height: 1; margin-bottom: 0.25rem;
+    }
+    .uptime-unit { font-size: 0.8rem; color: var(--gray-400); margin-bottom: 1.5rem; }
+    .uptime-tier {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem; font-weight: 700; letter-spacing: 0.1em;
+      color: white; background: rgba(227,0,15,0.15);
+      padding: 0.4rem 1.2rem; display: inline-block;
+    }
+    .hero-stats {
+      display: flex; gap: 2rem; margin-top: 2rem;
+      padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .hstat { text-align: center; }
+    .hstat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.6rem; font-weight: 700; color: var(--red);
+    }
+    .hstat-label { font-size: 0.7rem; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-tag {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--red);
+      display: block; margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800;
+      text-transform: uppercase; margin-bottom: 1rem; line-height: 1.1;
+    }
+    .section-sub { color: var(--gray-400); max-width: 560px; }
+
+    /* ─── SOCIAL PROOF / NUMBERS ─── */
+    #social-proof {
+      background: var(--gray-900);
+      border-top: 1px solid rgba(227,0,15,0.15);
+      border-bottom: 1px solid rgba(227,0,15,0.15);
+      padding: 3rem 2rem;
+    }
+    .proof-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    }
+    .proof-item {
+      text-align: center; padding: 1.5rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .proof-item:last-child { border-right: none; }
+    .proof-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 3rem; font-weight: 800; color: var(--red);
+      line-height: 1;
+    }
+    .proof-text { font-size: 0.8rem; color: var(--gray-400); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* ─── VALUE PROPOSITION ─── */
+    #value { background: var(--dark); }
+    .value-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px;
+      margin-top: 3rem; background: rgba(227,0,15,0.1);
+    }
+    .value-card {
+      background: var(--dark); padding: 2.5rem;
+      transition: background 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .value-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 3px; height: 0; background: var(--red);
+      transition: height 0.3s;
+    }
+    .value-card:hover::before { height: 100%; }
+    .value-card:hover { background: rgba(227,0,15,0.04); }
+    .value-icon {
+      width: 50px; height: 50px; background: rgba(227,0,15,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.5rem;
+      clip-path: polygon(6px 0%, 100% 0%, calc(100%-6px) 100%, 0 100%);
+    }
+    .value-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .value-card p { font-size: 0.87rem; color: var(--gray-400); line-height: 1.65; }
+
+    /* ─── HOW IT WORKS ─── */
+    #how-it-works { background: var(--black); }
+    .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 3rem; position: relative; }
+    .steps::before {
+      content: ''; position: absolute; top: 28px; left: 10%; right: 10%;
+      height: 2px; background: linear-gradient(90deg, var(--red) 0%, rgba(227,0,15,0.2) 100%);
+      z-index: 0;
+    }
+    .step { text-align: center; padding: 0 1rem; position: relative; z-index: 1; }
+    .step-num {
+      width: 56px; height: 56px; background: var(--red);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem; font-weight: 800; margin: 0 auto 1.25rem;
+      border: 3px solid var(--black);
+    }
+    .step h4 { font-size: 0.87rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .step p { font-size: 0.78rem; color: var(--gray-400); line-height: 1.55; }
+
+    /* ─── DEMO / ARCHITECTURE ─── */
+    #demo { background: var(--gray-900); }
+    .demo-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: center; margin-top: 3rem;
+    }
+    .arch-diagram {
+      background: var(--dark); border: 1px solid rgba(227,0,15,0.2);
+      padding: 2rem; position: relative;
+    }
+    .arch-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--red); margin-bottom: 1.5rem; }
+    .arch-row { display: flex; gap: 1rem; margin-bottom: 1rem; }
+    .arch-box {
+      flex: 1; background: rgba(227,0,15,0.06);
+      border: 1px solid rgba(227,0,15,0.2);
+      padding: 0.75rem; text-align: center;
+      font-size: 0.75rem; font-weight: 600;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .arch-box:hover { background: rgba(227,0,15,0.14); border-color: var(--red); }
+    .arch-box .box-label { color: var(--gray-400); font-size: 0.65rem; display: block; margin-top: 0.25rem; }
+    .arch-divider { border: none; border-top: 1px dashed rgba(227,0,15,0.2); margin: 1rem 0; }
+    .spec-list { list-style: none; }
+    .spec-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .spec-item:last-child { border-bottom: none; }
+    .spec-ico { color: var(--red); font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+    .spec-info h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .spec-info p { font-size: 0.8rem; color: var(--gray-400); }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials { background: var(--dark); }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .testi-card {
+      background: var(--gray-900); padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: border-color 0.3s;
+    }
+    .testi-card:hover { border-color: rgba(227,0,15,0.3); }
+    .testi-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem; }
+    .testi-quote { font-size: 0.9rem; color: var(--gray-200); line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+    .testi-avatar {
+      width: 40px; height: 40px; background: var(--red);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.85rem; flex-shrink: 0;
+      clip-path: polygon(0 15%, 15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+    }
+    .testi-name { font-size: 0.87rem; font-weight: 700; }
+    .testi-role { font-size: 0.75rem; color: var(--gray-400); }
+
+    /* ─── PRICING ─── */
+    #pricing { background: var(--black); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .pricing-card {
+      background: var(--gray-900); border: 1px solid rgba(255,255,255,0.06);
+      padding: 2.5rem; position: relative; transition: all 0.3s;
+    }
+    .pricing-card.featured {
+      border-color: var(--red);
+      background: linear-gradient(180deg, rgba(227,0,15,0.08) 0%, var(--gray-900) 100%);
+    }
+    .featured-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--red); padding: 0.25rem 1rem;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .plan-tier { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem; }
+    .plan-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .plan-price { font-family: 'Barlow Condensed', sans-serif; font-size: 2.8rem; font-weight: 800; line-height: 1; margin-bottom: 0.25rem; }
+    .plan-price span { font-size: 1rem; font-weight: 400; color: var(--gray-400); }
+    .plan-sub { font-size: 0.8rem; color: var(--gray-400); margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .plan-features { list-style: none; margin-bottom: 2rem; }
+    .plan-features li { padding: 0.5rem 0; font-size: 0.85rem; display: flex; align-items: center; gap: 0.6rem; color: var(--gray-200); }
+    .plan-features li::before { content: '✓'; color: var(--red); font-weight: 700; }
+    .plan-cta {
+      width: 100%; padding: 0.8rem; font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer;
+      border: none; transition: all 0.2s;
+    }
+    .plan-cta.primary { background: var(--red); color: white; }
+    .plan-cta.primary:hover { background: var(--red-light); }
+    .plan-cta.secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); }
+    .plan-cta.secondary:hover { border-color: var(--red); color: var(--red); }
+
+    /* ─── FAQ ─── */
+    #faq { background: var(--gray-900); }
+    .faq-list { max-width: 800px; margin: 3rem auto 0; }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%; text-align: left; background: none; border: none;
+      color: white; font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 0.95rem; font-weight: 600; padding: 1.25rem 0;
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; gap: 1rem;
+    }
+    .faq-q:hover { color: var(--red); }
+    .faq-arrow { color: var(--red); font-size: 1.2rem; transition: transform 0.3s; flex-shrink: 0; }
+    .faq-item.open .faq-arrow { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      font-size: 0.87rem; color: var(--gray-400); line-height: 1.7;
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.25rem; }
+
+    /* ─── CTA SECTION ─── */
+    #cta {
+      background: linear-gradient(135deg, #1a0002 0%, var(--red-dark) 50%, #1a0002 100%);
+      text-align: center; padding: 6rem 2rem;
+      position: relative; overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-tag { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; opacity: 0.8; }
+    .cta-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800;
+      text-transform: uppercase; margin-bottom: 1.25rem; line-height: 1.1;
+    }
+    .cta-sub { font-size: 1rem; opacity: 0.85; max-width: 500px; margin: 0 auto 2.5rem; }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+      background: white; color: var(--red); border: none;
+      padding: 0.9rem 2rem; font-size: 0.9rem; font-weight: 800;
+      letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      transition: all 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .btn-ghost {
+      background: transparent; color: white;
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 0.9rem 2rem; font-size: 0.9rem; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-ghost:hover { border-color: white; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 3rem 2rem 1.5rem;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+      padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 1.5rem;
+    }
+    .footer-brand p { font-size: 0.83rem; color: var(--gray-400); margin: 1rem 0; line-height: 1.65; }
+    .footer-col h5 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a { text-decoration: none; color: var(--gray-400); font-size: 0.83rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: white; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-size: 0.78rem; color: var(--gray-600); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--gray-600); text-decoration: none; }
+    .footer-links a:hover { color: var(--gray-400); }
+
+    /* ─── HEADER DECORATION ─── */
+    .section-header { margin-bottom: 0; }
+    .section-divider {
+      width: 48px; height: 3px; background: var(--red); margin: 1rem 0 1.5rem;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-visual { order: -1; }
+      .proof-grid { grid-template-columns: repeat(2, 1fr); }
+      .proof-item:nth-child(2) { border-right: none; }
+      .value-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .steps::before { display: none; }
+      .demo-layout { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 3.5rem 1.25rem; }
+      .value-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .proof-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 1rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-mark">V</div>
+      <div class="logo-text">VIETTEL <span>IDC</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#value">Giải Pháp</a></li>
+      <li><a href="#demo">Kiến Trúc</a></li>
+      <li><a href="#how-it-works">Quy Trình</a></li>
+      <li><a href="#pricing">Bảng Giá</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#cta" class="nav-cta">Tư Vấn Ngay</a>
+    <div class="hamburger" onclick="this.classList.toggle('active')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-content fade-up">
+      <div class="hero-badge">
+        <div class="badge-dot"></div>
+        Santiago · Dominican Republic · 2025
+      </div>
+      <h1 class="hero-title">
+        Hạ Tầng Cơ Điện<br>
+        <span class="accent">Tier III</span>
+        <span class="line2">Đẳng Cấp Quốc Tế</span>
+      </h1>
+      <p class="hero-sub">
+        Giải pháp Data Center tiên tiến do Viettel IDC thiết kế tại Santiago — tối ưu chi phí, dự phòng điện 2N, làm mát N+1, đảm bảo độ sẵn sàng <strong>99.982%</strong>.
+      </p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-primary">Nhận Tư Vấn Miễn Phí</a>
+        <a href="#demo" class="btn-outline">Xem Kiến Trúc</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat">
+          <div class="hstat-num">2N</div>
+          <div class="hstat-label">Điện Dự Phòng</div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-num">N+1</div>
+          <div class="hstat-label">Làm Mát</div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-num">82/100</div>
+          <div class="hstat-label">Điểm Rủi Ro</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual fade-up">
+      <div class="uptime-card">
+        <div class="uptime-label">Độ Sẵn Sàng Hệ Thống</div>
+        <div class="uptime-number">99.982%</div>
+        <div class="uptime-unit">Uptime SLA Cam Kết Mỗi Năm</div>
+        <div class="uptime-tier">TIER III CERTIFIED</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOCIAL PROOF ═══ -->
+<section id="social-proof">
+  <div class="section-inner">
+    <div class="proof-grid">
+      <div class="proof-item fade-up">
+        <div class="proof-num">16+</div>
+        <div class="proof-text">Giờ Hoạt Động Backup / Ngày</div>
+      </div>
+      <div class="proof-item fade-up">
+        <div class="proof-num">5</div>
+        <div class="proof-text">Giai Đoạn Triển Khai</div>
+      </div>
+      <div class="proof-item fade-up">
+        <div class="proof-num">2,250kW</div>
+        <div class="proof-text">Công Suất Máy Phát Điện</div>
+      </div>
+      <div class="proof-item fade-up">
+        <div class="proof-num">≤1.5</div>
+        <div class="proof-text">Tiêu Chuẩn PUE Tối Ưu</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VALUE PROPOSITION ═══ -->
+<section id="value">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <span class="section-tag">Tại Sao Chọn Viettel IDC</span>
+      <h2 class="section-title">Lợi Thế Chiến Lược<br>Vượt Trội</h2>
+      <div class="section-divider"></div>
+      <p class="section-sub">Ba trụ cột cốt lõi giúp giải pháp Santiago của chúng tôi trở thành lựa chọn hàng đầu cho hạ tầng số tại Caribbean.</p>
+    </div>
+    <div class="value-grid">
+      <div class="value-card fade-up">
+        <div class="value-icon">📍</div>
+        <h3>Vị Trí Địa Lý Chiến Lược</h3>
+        <p>Điểm số rủi ro địa lý tối ưu 82/100. Cân bằng hoàn hảo giữa an toàn địa lý và khả năng đáp ứng hạ tầng tốt nhất tại Santiago, Dominican Republic.</p>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-icon">🛡️</div>
+        <h3>An Toàn Thiên Tai Tuyệt Đối</h3>
+        <p>Nằm sâu trong nội địa, được bảo vệ bởi dãy núi Cordillera Central. Giảm thiểu triệt để rủi ro từ bão và lũ lụt ven biển.</p>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-icon">👩‍💻</div>
+        <h3>Nhân Lực Công Nghệ Cao</h3>
+        <p>Hưởng lợi trực tiếp từ nguồn kỹ sư công nghệ dồi dào và hệ sinh thái kết nối mạng lạc tại trung tâm công nghệ Cyberpark.</p>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-icon">⚡</div>
+        <h3>Điện Dự Phòng Dạng 2N</h3>
+        <p>Hai nhánh nguồn điện độc lập hoạt động song song — triệt tiêu mọi điểm lỗi đơn (single point of failure), đảm bảo liên tục 100%.</p>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-icon">❄️</div>
+        <h3>Làm Mát Thông Minh N+1</h3>
+        <p>Cách ly lý vật lý hoàn toàn giữa hành lang lạnh và hành lang nóng. Duy trì 18°C tối ưu, phù hợp mọi môi trường ngoài trời 28–35°C.</p>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-icon">📋</div>
+        <h3>Ưu Đãi Pháp Lý Đặc Biệt</h3>
+        <p>Tận dụng khung miễn giảm thuế từ khu Cyberpark và Luật 16-95 về Đầu tư Nước ngoài — tối ưu hóa chi phí vận hành dài hạn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section id="how-it-works">
+  <div class="section-inner">
+    <div class="section-header fade-up" style="text-align:center; margin-bottom: 0;">
+      <span class="section-tag" style="display:block; text-align:center;">Lộ Trình Triển Khai</span>
+      <h2 class="section-title">5 Giai Đoạn Thực Thi</h2>
+      <div class="section-divider" style="margin: 1rem auto;"></div>
+      <p class="section-sub" style="margin: 0 auto;">Quy trình khép kín từ thủ tục pháp lý đến vận hành thực tế trong 9–14 tháng.</p>
+    </div>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-num">01</div>
+        <h4>Thành Lập Pháp Nhân</h4>
+        <p>Đăng ký công ty, giấy phép đầu tư, các thủ tục pháp lý ban đầu tại Cộng hòa Dominican.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">02</div>
+        <h4>Xin Giấy Phép Xây Dựng</h4>
+        <p>Đánh giá tác động môi trường (EIA), giấy phép Điện lực và Viễn thông (INDOTEL).</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">03</div>
+        <h4>Thiết Kế & Mua Sắm</h4>
+        <p>Thiết kế chi tiết hệ thống điện, làm mát, UPS và lựa chọn thiết bị theo tiêu chuẩn Tier III.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">04</div>
+        <h4>Xây Dựng & Lắp Đặt</h4>
+        <p>Thi công hạ tầng, lắp đặt hệ thống cơ điện, kết nối mạng và kiểm thử từng hạng mục.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">05</div>
+        <h4>Vận Hành Thương Mại</h4>
+        <p>Nghiệm thu kỹ thuật, đào tạo nhân sự, khởi động thương mại và bàn giao cho khách hàng.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEMO / ARCHITECTURE ═══ -->
+<section id="demo">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <span class="section-tag">Kiến Trúc Kỹ Thuật</span>
+      <h2 class="section-title">Hệ Thống Điện & Làm Mát</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="demo-layout">
+      <div class="arch-diagram fade-up">
+        <div class="arch-title">⚡ Kiến Trúc Hệ Thống Điện 2N</div>
+        <div class="arch-row">
+          <div class="arch-box">Lưới Điện Quốc Gia<span class="box-label">Nguồn chính</span></div>
+        </div>
+        <hr class="arch-divider">
+        <div class="arch-row">
+          <div class="arch-box">BUS A<span class="box-label">Caterpillar 3516C · 2,250kW</span></div>
+          <div class="arch-box">BUS B<span class="box-label">Caterpillar 3516C · 2,250kW</span></div>
+        </div>
+        <hr class="arch-divider">
+        <div class="arch-row">
+          <div class="arch-box">UPS A<span class="box-label">Schneider Galaxy VX · 1,000kVA</span></div>
+          <div class="arch-box">UPS B<span class="box-label">Schneider Galaxy VX · 1,000kVA</span></div>
+        </div>
+        <hr class="arch-divider">
+        <div class="arch-row">
+          <div class="arch-box" style="background:rgba(227,0,15,0.12); border-color:var(--red);">
+            IT Load
+            <span class="box-label">Tải máy chủ khách hàng</span>
+          </div>
+        </div>
+        <div style="margin-top:1.25rem; font-size:0.72rem; color:var(--gray-400);">
+          ✓ Chuyển mạch 0 giây &nbsp;|&nbsp; ✓ Tải tuyệt đối 100% &nbsp;|&nbsp; ✓ Không gián đoạn
+        </div>
+      </div>
+      <div class="fade-up">
+        <ul class="spec-list">
+          <li class="spec-item">
+            <div class="spec-ico">🔋</div>
+            <div class="spec-info">
+              <h4>Máy Phát Điện Caterpillar 3516C</h4>
+              <p>2 máy × 2,250 kW — Khởi động tự động, tiếp nhiên liệu tự động 10 ngày liên tục.</p>
+            </div>
+          </li>
+          <li class="spec-item">
+            <div class="spec-ico">⚙️</div>
+            <div class="spec-info">
+              <h4>Máy Biến Áp ABB RESIBLOC</h4>
+              <p>2 máy × 3,000 kVA — Cách điện khô, không dầu, tiêu chuẩn công nghiệp cao nhất.</p>
+            </div>
+          </li>
+          <li class="spec-item">
+            <div class="spec-ico">🔌</div>
+            <div class="spec-info">
+              <h4>UPS Schneider Galaxy VX</h4>
+              <p>2 máy × 1,000 kVA — Ắc quy Li-ion, chuyển đổi lên tới 99%, không chớp điện.</p>
+            </div>
+          </li>
+          <li class="spec-item">
+            <div class="spec-ico">❄️</div>
+            <div class="spec-info">
+              <h4>Làm Mát Vertiv Liebert DSE 200kW</h4>
+              <p>8 tủ làm mát (7 vận hành + 1 dự phòng) — Duy trì 18°C ổn định, PUE ≤1.5.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <span class="section-tag">Khách Hàng & Đối Tác</span>
+      <h2 class="section-title">Đánh Giá Từ Các<br>Chuyên Gia Ngành</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Thiết kế Tier III của Viettel IDC tại Santiago đạt tiêu chuẩn quốc tế. Kiến trúc điện 2N và làm mát N+1 hoàn toàn thuyết phục hội đồng kỹ thuật của chúng tôi."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">NVA</div>
+          <div>
+            <div class="testi-name">Nguyễn Văn An</div>
+            <div class="testi-role">CTO, TechCorp Dominican Republic</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Điểm số rủi ro địa lý 82/100 và vị trí gần Cyberpark giúp chúng tôi tối ưu chi phí vận hành so với các giải pháp ven biển truyền thống."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">THL</div>
+          <div>
+            <div class="testi-name">Trần Hoàng Long</div>
+            <div class="testi-role">Infrastructure Director, Caribbean Cloud</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"UPS Schneider Galaxy VX với ắc quy Li-ion và máy biến áp ABB RESIBLOC — mức độ đầu tư thiết bị này chứng minh cam kết chất lượng nghiêm túc của Viettel IDC."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">PMT</div>
+          <div>
+            <div class="testi-name">Phạm Minh Tuấn</div>
+            <div class="testi-role">Data Center Consultant, ASEAN-LAC</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-header fade-up" style="text-align:center">
+      <span class="section-tag" style="display:block; text-align:center;">Bảng Giá Dịch Vụ</span>
+      <h2 class="section-title">Gói Dịch Vụ Colocation</h2>
+      <div class="section-divider" style="margin: 1rem auto;"></div>
+      <p class="section-sub" style="margin: 0 auto 0;">Linh hoạt cho mọi quy mô doanh nghiệp — từ startup đến tập đoàn đa quốc gia.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card fade-up">
+        <div class="plan-tier">Starter</div>
+        <div class="plan-name">Half Rack</div>
+        <div class="plan-price">$890<span>/tháng</span></div>
+        <div class="plan-sub">Phù hợp cho doanh nghiệp vừa & nhỏ</div>
+        <ul class="plan-features">
+          <li>21U không gian rack</li>
+          <li>2kW công suất điện</li>
+          <li>100 Mbps băng thông</li>
+          <li>Nguồn điện dự phòng 2N</li>
+          <li>Làm mát N+1</li>
+          <li>Hỗ trợ 24/7</li>
+        </ul>
+        <button class="plan-cta secondary">Liên Hệ Tư Vấn</button>
+      </div>
+      <div class="pricing-card featured fade-up">
+        <div class="featured-badge">Phổ Biến Nhất</div>
+        <div class="plan-tier">Business</div>
+        <div class="plan-name">Full Rack</div>
+        <div class="plan-price">$1,690<span>/tháng</span></div>
+        <div class="plan-sub">Giải pháp toàn diện cho doanh nghiệp</div>
+        <ul class="plan-features">
+          <li>42U không gian rack</li>
+          <li>5kW công suất điện</li>
+          <li>1 Gbps băng thông</li>
+          <li>Nguồn điện dự phòng 2N</li>
+          <li>Làm mát N+1</li>
+          <li>Remote hands 24/7</li>
+          <li>SLA 99.982% uptime</li>
+        </ul>
+        <button class="plan-cta primary">Đăng Ký Ngay</button>
+      </div>
+      <div class="pricing-card fade-up">
+        <div class="plan-tier">Enterprise</div>
+        <div class="plan-name">Cage / Suite</div>
+        <div class="plan-price">Liên Hệ<span></span></div>
+        <div class="plan-sub">Giải pháp tùy chỉnh cho tập đoàn lớn</div>
+        <ul class="plan-features">
+          <li>Không gian theo yêu cầu</li>
+          <li>10kW+ công suất điện</li>
+          <li>10 Gbps+ băng thông</li>
+          <li>Dedicated power path</li>
+          <li>Managed cooling</li>
+          <li>Dedicated account manager</li>
+          <li>Custom SLA & contract</li>
+        </ul>
+        <button class="plan-cta secondary">Yêu Cầu Báo Giá</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-header fade-up" style="text-align:center">
+      <span class="section-tag" style="display:block; text-align:center;">Câu Hỏi Thường Gặp</span>
+      <h2 class="section-title">Giải Đáp Thắc Mắc</h2>
+      <div class="section-divider" style="margin: 1rem auto 0;"></div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Tier III khác Tier II như thế nào về mặt kỹ thuật?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">Tier III yêu cầu N+1 cho mọi thành phần hạ tầng quan trọng và cho phép bảo trì không gián đoạn (concurrently maintainable). Tier II chỉ yêu cầu N+1 cho thiết bị điện và làm mát, nhưng không đảm bảo zero-downtime trong quá trình bảo trì.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Tại sao chọn Santiago thay vì Santo Domingo (thủ đô)?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">Santiago nằm sâu trong nội địa với dãy núi Cordillera Central bảo vệ, giảm thiểu rủi ro bão và lũ lụt ven biển. Điểm rủi ro địa lý 82/100 — cao hơn đáng kể so với các vị trí ven biển. Ngoài ra, khu Cyberpark cung cấp ưu đãi thuế và nhân lực kỹ thuật chất lượng cao.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Thời gian triển khai dự án là bao lâu?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">Lộ trình thực thi bao gồm 5 giai đoạn, từ thủ tục pháp lý đến nghiệm thu vận hành thương mại, ước tính 9–14 tháng tổng thể. Giai đoạn xin phép pháp lý (EIA, INDOTEL) thường chiếm 3–5 tháng, phụ thuộc tiến độ của cơ quan nhà nước Dominican Republic.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Chỉ số PUE ≤1.5 có ý nghĩa gì về mặt chi phí?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">PUE (Power Usage Effectiveness) ≤1.5 có nghĩa là với mỗi 1kW điện tiêu thụ cho IT, hệ thống chỉ tiêu thụ thêm tối đa 0.5kW cho overhead (làm mát, chiếu sáng, UPS loss). Đây là mức tối ưu cho khí hậu nhiệt đới, giúp tiết kiệm 20–30% chi phí điện so với các data center truyền thống PUE 1.8–2.0.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Viettel IDC có cung cấp dịch vụ remote hands không?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">Có. Đội ngũ kỹ thuật viên tại chỗ 24/7/365 có thể thực hiện các tác vụ từ xa (remote hands) như cắm cáp, khởi động lại máy chủ, thay thế thiết bị, kiểm tra đèn báo và chụp ảnh thiết bị. Dịch vụ được tính phí theo giờ hoặc gói tháng.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section id="cta">
+  <div class="cta-inner">
+    <p class="cta-tag">Bắt Đầu Ngay Hôm Nay</p>
+    <h2 class="cta-title">Sẵn Sàng Triển Khai<br>Hạ Tầng Số Của Bạn?</h2>
+    <p class="cta-sub">Đội ngũ chuyên gia Viettel IDC sẵn sàng tư vấn giải pháp phù hợp — từ thiết kế đến vận hành thương mại.</p>
+    <div class="cta-actions">
+      <button class="btn-white" onclick="alert('Cảm ơn bạn! Chúng tôi sẽ liên hệ trong vòng 24 giờ.')">Nhận Tư Vấn Miễn Phí</button>
+      <button class="btn-ghost" onclick="alert('Tải tài liệu kỹ thuật chi tiết...')">Tải Tài Liệu Kỹ Thuật</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="display:inline-flex; margin-bottom:1rem;">
+          <div class="logo-mark">V</div>
+          <div class="logo-text" style="font-size:1rem;">VIETTEL <span>IDC</span></div>
+        </a>
+        <p>Viettel IDC — đơn vị hạ tầng số của Tập đoàn Viettel, chuyên cung cấp giải pháp Data Center tiêu chuẩn quốc tế tại Đông Nam Á và Caribbean.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Giải Pháp</h5>
+        <ul>
+          <li><a href="#">Colocation</a></li>
+          <li><a href="#">Managed Hosting</a></li>
+          <li><a href="#">Cloud Services</a></li>
+          <li><a href="#">Network Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Tiêu Chuẩn</h5>
+        <ul>
+          <li><a href="#">Tier III Uptime</a></li>
+          <li><a href="#">ISO 27001</a></li>
+          <li><a href="#">PCI DSS</a></li>
+          <li><a href="#">HIPAA Compliant</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Liên Hệ</h5>
+        <ul>
+          <li><a href="#">📍 Santiago, DR</a></li>
+          <li><a href="#">📞 +1 809-XXX-XXXX</a></li>
+          <li><a href="#">✉️ idc@viettel.com.vn</a></li>
+          <li><a href="#">🌐 viettelidc.com.vn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Tập đoàn Viettel – Viettel IDC. Bảo lưu mọi quyền.</span>
+      <div class="footer-links">
+        <a href="#">Chính Sách Bảo Mật</a>
+        <a href="#">Điều Khoản Dịch Vụ</a>
+        <a href="#">SLA Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Intersection Observer for fade-up
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Smooth nav active state
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--white)' : '';
+    });
+  });
+
+  // Counter animation for social proof
+  function animateCounters() {
+    document.querySelectorAll('.proof-num').forEach(el => {
+      el.style.opacity = '1';
+    });
+  }
+
+  const proofSection = document.querySelector('#social-proof');
+  const proofObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      animateCounters();
+      proofObserver.disconnect();
+    }
+  }, { threshold: 0.3 });
+  if (proofSection) proofObserver.observe(proofSection);
+</script>
+</body>
+</html>
